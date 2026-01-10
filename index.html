@@ -102,6 +102,7 @@
             min-height: 100vh;
             max-width: 1200px;
             margin: 0 auto;
+            scroll-margin-top: 90px;
         }
         
         .hero {
@@ -346,22 +347,74 @@
             gap: 2rem;
         }
         
-        .portfolio-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .portfolio-card {
+            display: block;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             position: relative;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            background: white;
+            color: inherit;
+            text-decoration: none;
         }
         
-        .portfolio-item:hover {
-            transform: translateY(-10px);
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
         }
-        
-        .portfolio-item iframe {
+
+        .portfolio-media {
+            position: relative;
+            height: 240px;
+            background: #e9eef3;
+        }
+
+        .media-stack {
+            position: absolute;
+            inset: 0;
+        }
+
+        .stack-card {
+            position: absolute;
+            width: 88%;
+            height: 88%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+            top: 50%;
+            left: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .stack-1 {
+            transform: translate(-56%, -56%);
+        }
+
+        .stack-2 {
+            transform: translate(-50%, -50%);
+        }
+
+        .stack-3 {
+            transform: translate(-44%, -44%);
+        }
+
+        .portfolio-card:hover .stack-1 {
+            transform: translate(-58%, -58%);
+        }
+
+        .portfolio-card:hover .stack-3 {
+            transform: translate(-42%, -42%);
+        }
+
+        .portfolio-cover {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            height: 250px;
-            border: none;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
         }
         
         .portfolio-info {
@@ -372,6 +425,80 @@
         .portfolio-info h3 {
             margin-bottom: 0.5rem;
             color: var(--primary);
+        }
+
+        .modal-content.portfolio-modal-content {
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+        }
+
+        .portfolio-modal-header {
+            padding: 1.2rem 1.5rem 0;
+        }
+
+        .portfolio-modal-header h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .portfolio-modal-body {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .portfolio-modal-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+        }
+
+        .portfolio-modal-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            display: none;
+        }
+
+        .portfolio-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.55);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: background 0.2s;
+        }
+
+        .portfolio-nav:hover {
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .portfolio-nav.prev {
+            left: 12px;
+        }
+
+        .portfolio-nav.next {
+            right: 12px;
+        }
+
+        .portfolio-modal-count {
+            text-align: center;
+            padding-bottom: 1.2rem;
+            color: #666;
+            font-size: 0.9rem;
         }
         
         /* 获奖证明 */
@@ -583,6 +710,21 @@
                 transform: scale(1);
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .hidden,
+            .show {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
         
         /* 响应式设计 */
         @media (max-width: 992px) {
@@ -691,7 +833,7 @@
         <h2 class="section-title">關於我</h2>
         <div class="about-content">
             <div class="profile-img">
-                <img src="https://i.imgur.com/lvVYx5k.jpg" alt="TomQZQ">
+                <img src="https://i.imgur.com/lvVYx5k.jpg" alt="TomQZQ" loading="lazy">
             </div>
             <div class="about-text">
                 <h3>熱衷於資訊科技與程式設計</h3>
@@ -721,13 +863,13 @@
                     <div class="skill-icon">
                         <i class="fab fa-python"></i>
                     </div>
-                    <div class="skill-name">Python (60%)</div>
+                    <div class="skill-name">Python (80%)</div>
                     <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 60%;"></div>
+                        <div class="skill-level-bar" style="width: 80%;"></div>
                     </div>
                 </div>
                 <div class="skill-back">
-                    <p>可以寫中小型腳本和數據處理，自如使用主流庫。</p>
+                    <p>熟練資料處理與腳本自動化，能用常見庫完成專題。</p>
                 </div>
             </div>
             
@@ -736,13 +878,13 @@
                     <div class="skill-icon">
                         <i class="fas fa-copyright"></i>
                     </div>
-                    <div class="skill-name">C/C++ (65%)</div>
+                    <div class="skill-name">C/C++ (80%)</div>
                     <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 65%;"></div>
+                        <div class="skill-level-bar" style="width: 80%;"></div>
                     </div>
                 </div>
                 <div class="skill-back">
-                    <p>掌握指針和STL，可編寫中等複雜度項目。</p>
+                    <p>熟悉指針與 STL，能完成中大型競賽與專題程式。</p>
                 </div>
             </div>
             
@@ -766,13 +908,13 @@
                     <div class="skill-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <div class="skill-name">機器學習 (20%)</div>
+                    <div class="skill-name">機器學習 (45%)</div>
                     <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 20%;"></div>
+                        <div class="skill-level-bar" style="width: 45%;"></div>
                     </div>
                 </div>
                 <div class="skill-back">
-                    <p>了解基本概念，能用 scikit-learn 跑簡單模型。</p>
+                    <p>能做資料清理與特徵工程，使用 scikit-learn 訓練與評估模型。</p>
                 </div>
             </div>
             
@@ -856,13 +998,58 @@
                     <div class="skill-icon">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <div class="skill-name">JavaScript (60%)</div>
+                    <div class="skill-name">JavaScript (80%)</div>
                     <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 40%;"></div>
+                        <div class="skill-level-bar" style="width: 80%;"></div>
                     </div>
                 </div>
                 <div class="skill-back">
-                    <p>能做基礎網頁交互，掌握ES6語法。</p>
+                    <p>能寫中等規模前端互動，熟悉 DOM 與 ES6+ 語法。</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-front">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <div class="skill-name">Node.js (65%)</div>
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="width: 65%;"></div>
+                    </div>
+                </div>
+                <div class="skill-back">
+                    <p>能用 Node.js/Express 撰寫 API，處理路由與中介層。</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-front">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-name">MySQL (65%)</div>
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="width: 65%;"></div>
+                    </div>
+                </div>
+                <div class="skill-back">
+                    <p>能設計表結構與寫 CRUD，多表查詢與索引基礎。</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-front">
+                    <div class="skill-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <div class="skill-name">微信小程序 (60%)</div>
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="skill-back">
+                    <p>熟悉 WXML/WXSS/JS，能做頁面路由與 API 串接。</p>
                 </div>
             </div>
         </div>
@@ -870,49 +1057,119 @@
 
     <!-- 個人作品部分 -->
     <section id="portfolio" class="portfolio">
-        <h2 class="section-title">個人作品</h2>
+        <h2 class="section-title">作品/活動</h2>
         <div class="portfolio-container">
-            <div class="portfolio-item">
-                <iframe src="https://youtu.be/GZ2tqasM01s" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="portfolio-card" data-portfolio data-type="video" data-title="Geog project 街頭訪問" data-desc="以街訪形式呈現地理主題，完成採訪與後期剪輯。" data-video="https://www.youtube.com/embed/GZ2tqasM01s">
+                <div class="portfolio-media">
+                    <img class="portfolio-cover" src="https://img.youtube.com/vi/GZ2tqasM01s/hqdefault.jpg" alt="Geog project 街頭訪問 影片預覽" loading="lazy">
+                </div>
                 <div class="portfolio-info">
                     <h3>Geog project 街頭訪問</h3>
                     <p>使用Ai進行剪輯，包括製作特效、素材分析和運鏡設計。</p>
                 </div>
             </div>
             
-            <div class="portfolio-item">
-                <iframe src="https://youtu.be/vSgBpDuO_WM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="portfolio-card" data-portfolio data-type="video" data-title="Arduino 羅漢塔" data-desc="結合硬體與演算法的展示作品，呈現羅漢塔過程。" data-video="https://www.youtube.com/embed/vSgBpDuO_WM">
+                <div class="portfolio-media">
+                    <img class="portfolio-cover" src="https://i.imgur.com/xl7cqGY.jpeg" alt="Arduino 羅漢塔 作品照片" loading="lazy">
+                </div>
                 <div class="portfolio-info">
                     <h3>Arduino 羅漢塔</h3>
                     <p>使用Arduino製作的機器，能夠簡單展示羅漢塔的解密過程和算法應用。</p>
                 </div>
             </div>
 
-            <div class="award-card" data-category="it">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/D4JsngE.jpeg" alt="">
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="3dsmax 3d model - brain" data-desc="3ds Max 建模練習，呈現腦部結構與材質細節。" data-images="https://i.imgur.com/D4JsngE.jpeg,https://i.imgur.com/tXJg6re.jpeg,https://i.imgur.com/BdFjlxI.jpeg">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/D4JsngE.jpeg" alt="3dsmax 3d model - brain 圖片 1" loading="lazy">
+                        <img class="stack-card stack-2" src="https://i.imgur.com/tXJg6re.jpeg" alt="3dsmax 3d model - brain 圖片 2" loading="lazy">
+                        <img class="stack-card stack-3" src="https://i.imgur.com/BdFjlxI.jpeg" alt="3dsmax 3d model - brain 圖片 3" loading="lazy">
+                    </div>
                 </div>
-                <div class="award-info">
+                <div class="portfolio-info">
                     <h3>3dsmax 3d model - brain</h3>
                     <p>3dsmax 3d建模 - 大腦</p>
                 </div>
             </div>
+
+            <div class="portfolio-card" data-portfolio data-type="video" data-title="alice三D動畫" data-desc="三維動畫分鏡與鏡頭運動練習，完成基礎場景表現。" data-video="https://www.youtube.com/embed/my_ZYo1p090">
+                <div class="portfolio-media">
+                    <img class="portfolio-cover" src="https://img.youtube.com/vi/my_ZYo1p090/hqdefault.jpg" alt="alice三D動畫 影片預覽" loading="lazy">
+                </div>
+                <div class="portfolio-info">
+                    <h3>alice三D動畫</h3>
+                    <p>以人物與場景動畫為主題的創作練習。</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="機器人社團開放日活動" data-desc="活動展示與互動體驗設計，負責流程與現場協調。" data-images="https://i.imgur.com/r6DmAOh.jpeg,https://i.imgur.com/a1xNHHc.jpeg,https://i.imgur.com/fWGWPGF.jpeg">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/r6DmAOh.jpeg" alt="機器人社團開放日活動 圖片 1" loading="lazy">
+                        <img class="stack-card stack-2" src="https://i.imgur.com/a1xNHHc.jpeg" alt="機器人社團開放日活動 圖片 2" loading="lazy">
+                        <img class="stack-card stack-3" src="https://i.imgur.com/fWGWPGF.jpeg" alt="機器人社團開放日活動 圖片 3" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>機器人社團開放日活動</h3>
+                    <p>策劃展示內容並帶領現場互動體驗。</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="flstudio和小貓" data-desc="音樂製作練習與節奏設計，結合主題視覺呈現。" data-images="https://i.imgur.com/jl94kaD.jpeg">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/jl94kaD.jpeg" alt="flstudio和小貓 圖片 1" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>flstudio和小貓</h3>
+                    <p>找不到作品了，只能找到這張小貓來證明了，以後再補</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="商業性質微信小程序" data-desc="商業小程序規劃與介面設計，串接後端資料。" data-images="https://i.imgur.com/AnvboFD.png,https://i.imgur.com/wAtJUe0.png,https://i.imgur.com/R9bzciu.png">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/AnvboFD.png" alt="商業性質微信小程序 圖片 1" loading="lazy">
+                        <img class="stack-card stack-2" src="https://i.imgur.com/wAtJUe0.png" alt="商業性質微信小程序 圖片 2" loading="lazy">
+                        <img class="stack-card stack-3" src="https://i.imgur.com/R9bzciu.png" alt="商業性質微信小程序 圖片 3" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>商業性質微信小程序</h3>
+                    <p>以商業需求為導向的功能規劃與流程設計。</p>
+                </div>
+            </div>
+
+            <a class="portfolio-card" href="https://cdsj5robot.com/phoneweb/dist/index.html" target="_blank" rel="noopener noreferrer" aria-label="第七屆手機網站技術比賽 簡介">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/AZvj89a.png" alt="第七屆手機網站技術比賽 預覽 1" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>第七屆手機網站技術比賽</h3>
+                    <p>比賽簡介與活動內容介紹，點擊查看官方頁面。</p>
+                </div>
+            </a>
+
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="第八屆手機網站技術比賽" data-desc="第八屆比賽作品展示與活動花絮。" data-images="https://i.imgur.com/IlPkYM7.png,https://i.imgur.com/GTHdmDo.png,https://i.imgur.com/CE57Jfm.png,https://i.imgur.com/n22ELs0.png">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/IlPkYM7.png" alt="第八屆手機網站技術比賽 圖片 1" loading="lazy">
+                        <img class="stack-card stack-2" src="https://i.imgur.com/GTHdmDo.png" alt="第八屆手機網站技術比賽 圖片 2" loading="lazy">
+                        <img class="stack-card stack-3" src="https://i.imgur.com/CE57Jfm.png" alt="第八屆手機網站技術比賽 圖片 3" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>第八屆手機網站技術比賽</h3>
+                    <p>比賽作品展示。</p>
+                </div>
+            </div>
         </div>
     </section>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.portfolio-item iframe').forEach(frame => {
-        const url = frame.src.trim();
-        // 匹配 youtu.be 或 youtube.com/watch?v= 或 embed/ 链接中的视频 ID
-        const match = url.match(
-          /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/
-        );
-        if (match && match[1]) {
-          frame.src = `https://www.youtube.com/embed/${match[1]}`;
-        }
-      });
-    });
-  </script>
     <!-- 獲獎證明部分 -->
     <section id="awards" class="awards">
         <h2 class="section-title">獲獎證明</h2>
@@ -929,7 +1186,7 @@
             <!-- 學術競賽 -->
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/5EO8qMb.jpeg" alt="">
+                    <img src="https://i.imgur.com/5EO8qMb.jpeg" alt="FISO National Round 2024 – Digital Technology (Gold)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>FISO National Round 2024 – Digital Technology (Gold)</h3>
@@ -940,7 +1197,7 @@
             
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/Z0Nawvf.jpeg" alt="">
+                    <img src="https://i.imgur.com/Z0Nawvf.jpeg" alt="FISO National Round 2024 – Mathematics (Bronze)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>FISO National Round 2024 – Mathematics (Bronze)</h3>
@@ -951,7 +1208,7 @@
             
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/SjGjArN.jpeg" alt="">
+                    <img src="https://i.imgur.com/SjGjArN.jpeg" alt="FISO National Round 2024 – Reasoning & Logic (Gold)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>FISO National Round 2024 – Reasoning & Logic (Gold)</h3>
@@ -961,7 +1218,7 @@
             
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/zYZGXNV.jpeg" alt="">
+                    <img src="https://i.imgur.com/zYZGXNV.jpeg" alt="Global Mathematics Coding Competition 2022 – Gold Award" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Global Mathematics Coding Competition 2022 – Gold Award</h3>
@@ -971,7 +1228,7 @@
             
             <div class="award-card" data-category="other">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/T6oBuZ7.jpeg" alt="">
+                    <img src="https://i.imgur.com/T6oBuZ7.jpeg" alt="2024-2025 Award for Academic Achievement - First Prize" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>2024-2025 Award for Academic Achievement - First Prize</h3>
@@ -981,7 +1238,7 @@
             
             <div class="award-card" data-category="other">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/AOonLl5.jpeg" alt="">
+                    <img src="https://i.imgur.com/AOonLl5.jpeg" alt="2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金</h3>
@@ -990,7 +1247,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/W4EHOEy.jpeg" alt="">
+                    <img src="https://i.imgur.com/W4EHOEy.jpeg" alt="第二十一屆港澳青少年網路技能大賽2025 金獎" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>第二十一屆港澳青少年網路技能大賽2025 金獎</h3>
@@ -999,7 +1256,7 @@
             
             <div class="award-card" data-category="other">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/nRdOw1t.jpeg" alt="">
+                    <img src="https://i.imgur.com/nRdOw1t.jpeg" alt="2024-2025 科學與科技成績優異獎" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>2024-2025 科學與科技成績優異獎</h3>
@@ -1008,7 +1265,7 @@
             
             <div class="award-card" data-category="other">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/gleR4l9.jpeg" alt="">
+                    <img src="https://i.imgur.com/gleR4l9.jpeg" alt="2024-2025 明德獎" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>2024-2025 明德獎</h3>
@@ -1017,7 +1274,7 @@
             
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/NRIQwgG.jpeg" alt="">
+                    <img src="https://i.imgur.com/NRIQwgG.jpeg" alt="IMEC.online Maths Olympiad IMEC5 2024 – Silver Award" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>IMEC.online Maths Olympiad IMEC5 2024 – Silver Award</h3>
@@ -1027,7 +1284,7 @@
                      
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/q88WQHQ.jpeg" alt="">
+                    <img src="https://i.imgur.com/q88WQHQ.jpeg" alt="ROBOFEST Macau RoboArts Senior 2022 – 2nd Place" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ROBOFEST Macau RoboArts Senior 2022 – 2nd Place</h3>
@@ -1037,7 +1294,7 @@
           
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/9gxUG3N.jpeg" alt="">
+                    <img src="https://i.imgur.com/9gxUG3N.jpeg" alt="Singapore Math Challenge 2024 – Exemplary Award" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Singapore Math Challenge 2024 – Exemplary Award</h3>
@@ -1047,7 +1304,7 @@
 
             <div class="award-card" data-category="academic">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/Ml0xSUb.jpeg" alt="">
+                    <img src="https://i.imgur.com/Ml0xSUb.jpeg" alt="WMI Preliminary Round 2022 – Bronze Award" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>WMI Preliminary Round 2022 – Bronze Award</h3>
@@ -1058,7 +1315,7 @@
             <!-- 音樂證書 -->
             <div class="award-card" data-category="music">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/6oYpTAQ.jpeg" alt="">
+                    <img src="https://i.imgur.com/6oYpTAQ.jpeg" alt="ABRSM Grade 1 Piano – 2015" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ABRSM Grade 1 Piano – 2015</h3>
@@ -1068,7 +1325,7 @@
             
             <div class="award-card" data-category="music">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/MW0Jp6H.jpeg" alt="">
+                    <img src="https://i.imgur.com/MW0Jp6H.jpeg" alt="ABRSM Grade 3 Piano – 2016 (with merit)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ABRSM Grade 3 Piano – 2016 (with merit)</h3>
@@ -1078,7 +1335,7 @@
                         
             <div class="award-card" data-category="music">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/Y0UMeOu.png" alt="">
+                    <img src="https://i.imgur.com/Y0UMeOu.png" alt="ABRSM Grade 5 Music Theory – 2020 (with distinction)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ABRSM Grade 5 Music Theory – 2020 (with distinction)</h3>
@@ -1088,7 +1345,7 @@
 
             <div class="award-card" data-category="music">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/Ejvwxwn.jpeg" alt="">
+                    <img src="https://i.imgur.com/Ejvwxwn.jpeg" alt="ABRSM Grade 5 Piano – 2018" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ABRSM Grade 5 Piano – 2018</h3>
@@ -1098,7 +1355,7 @@
                         
             <div class="award-card" data-category="music">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/1ZI3WzY.jpeg" alt="">
+                    <img src="https://i.imgur.com/1ZI3WzY.jpeg" alt="ABRSM Grade 7 Piano – 2021 (with merit)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ABRSM Grade 7 Piano – 2021 (with merit)</h3>
@@ -1108,7 +1365,7 @@
                         
             <div class="award-card" data-category="music">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/5WRBDVz.jpeg" alt="">
+                    <img src="https://i.imgur.com/5WRBDVz.jpeg" alt="ABRSM Grade 8 Piano – 2023 (with merit)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>ABRSM Grade 8 Piano – 2023 (with merit)</h3>
@@ -1122,7 +1379,7 @@
 
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/BwgFK1Y.jpeg" alt="">
+                    <img src="https://i.imgur.com/BwgFK1Y.jpeg" alt="CCF CSP-J/S Elementary Level – First Prize (2023)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>CCF CSP-J/S Elementary Level – First Prize (2023)</h3>
@@ -1132,7 +1389,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/gok5yBJ.jpeg" alt="">
+                    <img src="https://i.imgur.com/gok5yBJ.jpeg" alt="CCF CSP-J/S Intermediate Level – Second Prize (2023)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>CCF CSP-J/S Intermediate Level – Second Prize (2023)</h3>
@@ -1143,7 +1400,7 @@
               
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/DNy0kGO.png" alt="">
+                    <img src="https://i.imgur.com/DNy0kGO.png" alt="Excel 2019 Associate – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Excel 2019 Associate – 2025</h3>
@@ -1153,7 +1410,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/YB0SsC9.png" alt="">
+                    <img src="https://i.imgur.com/YB0SsC9.png" alt="Excel 2019 Expert – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Excel 2019 Expert – 2025</h3>
@@ -1163,7 +1420,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/pLj79FQ.png" alt="">
+                    <img src="https://i.imgur.com/pLj79FQ.png" alt="Microsoft Office Specialist – Associate (MOS) – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Microsoft Office Specialist – Associate (MOS) – 2025</h3>
@@ -1173,7 +1430,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/hIrCLoj.jpeg" alt="">
+                    <img src="https://i.imgur.com/hIrCLoj.jpeg" alt="MOIJ Macau Informatics Olympiad – Silver Award (2023)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>MOIJ Macau Informatics Olympiad – Silver Award (2023)</h3>
@@ -1183,7 +1440,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/bIIRPyd.png" alt="">
+                    <img src="https://i.imgur.com/bIIRPyd.png" alt="Office PowerPoint? 2016 – 2023" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Office PowerPoint® 2016 – 2023</h3>
@@ -1193,7 +1450,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/Irtr7yf.png" alt="">
+                    <img src="https://i.imgur.com/Irtr7yf.png" alt="PowerPoint 2019 Associate – 2023" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>PowerPoint 2019 Associate – 2023</h3>
@@ -1203,7 +1460,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/eAEoWUz.jpeg" alt="">
+                    <img src="https://i.imgur.com/eAEoWUz.jpeg" alt="Programming C Level-1 (E) – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Programming C Level-1 (E) – 2025</h3>
@@ -1213,7 +1470,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/1qdFzBl.jpeg" alt="">
+                    <img src="https://i.imgur.com/1qdFzBl.jpeg" alt="Python Level-1 – Junior Software Programming Test – 2024" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Python Level-1 – Junior Software Programming Test – 2024</h3>
@@ -1223,7 +1480,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/piOOcBz.png" alt="">
+                    <img src="https://i.imgur.com/piOOcBz.png" alt="Word 2019 Associate – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Word 2019 Associate – 2025</h3>
@@ -1233,7 +1490,7 @@
             
             <div class="award-card" data-category="it">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/pGhF4Bv.png" alt="">
+                    <img src="https://i.imgur.com/pGhF4Bv.png" alt="Word Associate – Microsoft 365 Apps – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>Word Associate – Microsoft 365 Apps – 2025</h3>
@@ -1246,7 +1503,7 @@
             <!-- AI/STEM創新 -->
             <div class="award-card" data-category="ai">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/wwjWw0w.jpeg" alt="">
+                    <img src="https://i.imgur.com/wwjWw0w.jpeg" alt="1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)" loading="lazy">
                 </div>
                 <div class="award-info">
                     <h3>1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)</h3>
@@ -1276,13 +1533,13 @@
     <section id="contact" class="contact">
         <h2 class="section-title">TomQZQ</h2>
         <div class="social-icons">
-            <a href="https://space.bilibili.com/1275692900" class="social-icon" target="_blank">
+            <a href="https://space.bilibili.com/1275692900" class="social-icon" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-bilibili"></i>
             </a>
-            <a href="https://www.instagram.com/hakari811/" class="social-icon" target="_blank">
+            <a href="https://www.instagram.com/hakari811/" class="social-icon" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://github.com/rryzzl" class="social-icon" target="_blank">
+            <a href="https://github.com/rryzzl" class="social-icon" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-github"></i>
             </a>
         </div>
@@ -1293,10 +1550,32 @@
         <p class="copyright">聖若瑟教區中學第五校學生</p>
     </section>
 
+    <!-- 作品/活動模態框 -->
+    <div class="modal" id="portfolioModal">
+        <div class="modal-content portfolio-modal-content">
+            <span class="close-modal" id="portfolioClose">&times;</span>
+            <div class="portfolio-modal-header">
+                <h3 id="portfolioModalTitle"></h3>
+                <p id="portfolioModalDesc"></p>
+            </div>
+            <div class="portfolio-modal-body">
+                <button class="portfolio-nav prev" id="portfolioPrev" type="button" aria-label="上一張">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <img src="" alt="" class="modal-img portfolio-modal-image" id="portfolioModalImage">
+                <iframe class="portfolio-modal-video" id="portfolioModalVideo" title="Portfolio video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="portfolio-nav next" id="portfolioNext" type="button" aria-label="下一張">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="portfolio-modal-count" id="portfolioModalCount"></div>
+        </div>
+    </div>
+
     <!-- 證書模態框 -->
     <div class="modal" id="awardModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" id="awardClose">&times;</span>
             <img src="" alt="證書" class="modal-img" id="modalImage">
         </div>
     </div>
@@ -1305,6 +1584,8 @@
         // 導航欄漢堡菜單功能
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
+        const header = document.querySelector('header');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -1352,9 +1633,11 @@
                 
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+                    const offset = header ? header.offsetHeight : 0;
                     window.scrollTo({
-                        top: target.offsetTop,
-                        behavior: 'smooth'
+                        top: targetTop - offset,
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
                     });
                     
                     // 如果是移動設備，點擊後關閉導航菜單
@@ -1365,10 +1648,92 @@
             });
         });
         
+        // 作品/活動卡片互動
+        const portfolioModal = document.getElementById('portfolioModal');
+        const portfolioModalImage = document.getElementById('portfolioModalImage');
+        const portfolioModalVideo = document.getElementById('portfolioModalVideo');
+        const portfolioModalTitle = document.getElementById('portfolioModalTitle');
+        const portfolioModalDesc = document.getElementById('portfolioModalDesc');
+        const portfolioModalCount = document.getElementById('portfolioModalCount');
+        const portfolioPrev = document.getElementById('portfolioPrev');
+        const portfolioNext = document.getElementById('portfolioNext');
+        const portfolioClose = document.getElementById('portfolioClose');
+        let portfolioImages = [];
+        let portfolioIndex = 0;
+
+        const setPortfolioImage = (index) => {
+            if (!portfolioImages.length) {
+                return;
+            }
+            portfolioIndex = (index + portfolioImages.length) % portfolioImages.length;
+            portfolioModalImage.src = portfolioImages[portfolioIndex];
+            portfolioModalImage.alt = `${portfolioModalTitle.textContent} 圖片 ${portfolioIndex + 1}`;
+            portfolioModalCount.textContent = `${portfolioIndex + 1} / ${portfolioImages.length}`;
+        };
+
+        const openPortfolioModal = (card) => {
+            const type = card.dataset.type;
+            portfolioModalTitle.textContent = card.dataset.title || '';
+            portfolioModalDesc.textContent = card.dataset.desc || '';
+
+            if (type === 'video') {
+                portfolioImages = [];
+                portfolioModalImage.style.display = 'none';
+                portfolioPrev.style.display = 'none';
+                portfolioNext.style.display = 'none';
+                portfolioModalCount.textContent = '影片';
+                portfolioModalVideo.src = card.dataset.video || '';
+                portfolioModalVideo.style.display = 'block';
+            } else {
+                portfolioModalVideo.style.display = 'none';
+                portfolioModalVideo.src = '';
+                portfolioImages = (card.dataset.images || '')
+                    .split(',')
+                    .map((item) => item.trim())
+                    .filter(Boolean);
+                if (!portfolioImages.length) {
+                    return;
+                }
+                portfolioModalImage.style.display = 'block';
+                portfolioPrev.style.display = portfolioImages.length > 1 ? 'flex' : 'none';
+                portfolioNext.style.display = portfolioImages.length > 1 ? 'flex' : 'none';
+                setPortfolioImage(0);
+            }
+
+            portfolioModal.style.display = 'flex';
+        };
+
+        document.querySelectorAll('[data-portfolio]').forEach((card) => {
+            card.addEventListener('click', () => {
+                openPortfolioModal(card);
+            });
+        });
+
+        portfolioPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setPortfolioImage(portfolioIndex - 1);
+        });
+
+        portfolioNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setPortfolioImage(portfolioIndex + 1);
+        });
+
+        portfolioModalImage.addEventListener('click', () => {
+            if (portfolioImages.length > 1) {
+                setPortfolioImage(portfolioIndex + 1);
+            }
+        });
+
+        portfolioClose.addEventListener('click', () => {
+            portfolioModal.style.display = 'none';
+            portfolioModalVideo.src = '';
+        });
+
         // 獲獎證明點擊放大功能
-        const modal = document.getElementById('awardModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeModal = document.querySelector('.close-modal');
+        const awardModal = document.getElementById('awardModal');
+        const awardModalImg = document.getElementById('modalImage');
+        const awardClose = document.getElementById('awardClose');
         
         document.querySelectorAll('.award-card').forEach(card => {
             card.addEventListener('click', () => {
@@ -1376,22 +1741,25 @@
                 const imgEl = card.querySelector('img');
                 if (imgEl) {
                 // 自動把 img 的 src 塞到 modalImg
-                modalImg.src = imgEl.src;
-                modal.style.display = 'flex';
+                awardModalImg.src = imgEl.src;
+                awardModal.style.display = 'flex';
                 }
             });
         });
 
-        
         // 關閉模態框
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
+        awardClose.addEventListener('click', () => {
+            awardModal.style.display = 'none';
         });
         
         // 點擊模態框背景關閉
         window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+            if (e.target === awardModal) {
+                awardModal.style.display = 'none';
+            }
+            if (e.target === portfolioModal) {
+                portfolioModal.style.display = 'none';
+                portfolioModalVideo.src = '';
             }
         });
         
@@ -1399,6 +1767,13 @@
         window.addEventListener('load', () => {
             // 為所有需要動畫的元素添加hidden類
             const animateElements = document.querySelectorAll('.about-content > *, .skills-container > *, .portfolio-container > *, .awards-container > *');
+            if (prefersReducedMotion) {
+                animateElements.forEach(el => {
+                    el.classList.add('show');
+                });
+                return;
+            }
+
             animateElements.forEach(el => {
                 el.classList.add('hidden');
             });
@@ -1411,5 +1786,4 @@
     </script>
 </body>
 </html>
-
 
