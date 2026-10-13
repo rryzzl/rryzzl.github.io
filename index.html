@@ -2,8 +2,9 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TomQZQ | 資訊科技愛好者</title>
+    <meta name="description" content="柯彬淼的個人作品集：資訊科技競賽、微信小程序、Arduino、學業成果與獲獎證明。"><title>柯彬淼 TomQZQ | 資訊科技・比賽與作品</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -507,30 +508,6 @@
             background-color: #f1f5f9;
         }
         
-        .categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .category-btn {
-            background: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .category-btn.active, .category-btn:hover {
-            background: var(--secondary);
-            color: white;
-        }
-        
         .awards-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -797,23 +774,89 @@
             opacity: 1;
             transform: translateY(0);
         }
-    </style>
+    
+        /* Resume content and responsive refinements */
+        .hamburger { background: transparent; border: 0; padding: .4rem; }
+        .btn-outline { margin: .75rem 0 .75rem .65rem; background: transparent; border-color: #b9ddf6; }
+        .hero h2 { font-size: clamp(1.35rem, 3vw, 2rem); }
+        .hero p { max-width: 680px; margin: 0 auto 1.75rem; line-height: 1.9; }
+        .about-text p { line-height: 1.9; }
+        .section-intro { color: #566574; max-width: 740px; margin: -1rem auto 2.5rem; text-align: center; }
+        .academic-block { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid #dce5ee; }
+        .eyebrow { color: #287caf; font-size: .75rem; letter-spacing: .14em; font-weight: 700; }
+        .section-heading h3 { color: var(--primary); font-size: 1.55rem; margin: .35rem 0; }
+        .section-heading p, .academic-note { color: #566574; }
+        .score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.6rem 0 1rem; }
+        .score-grid div { background: #f0f6fb; border-radius: 12px; padding: 1.2rem; }
+        .score-grid strong { display: block; font-size: 2rem; color: #21577d; }
+        .score-grid span { color: #526777; }
+        .scholarships { margin: 1.3rem 0 0 1.3rem; line-height: 1.9; }
+        .campus-heading { margin-top: 2.5rem; }
+        .campus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 1.2rem; }
+        .campus-grid article > span { font-size: .85rem; color: #607788; }
+        .campus-grid h4 { color: var(--primary); margin: .4rem 0; }
+        .campus-grid p { color: #566574; font-size: .95rem; }
+        .competitions { background: #fff; min-height: auto; }
+        .competition-list { list-style: none; border-top: 1px solid #dce5ee; }
+        .competition-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 170px; align-items: center; gap: 1.4rem; padding: 1.3rem .8rem; border-bottom: 1px solid #dce5ee; }
+        .competition-row:nth-child(2n) { background: #f7fafc; }
+        .competition-year { color: #526777; font-size: .9rem; font-variant-numeric: tabular-nums; }
+        .competition-row h3 { font-size: 1rem; line-height: 1.65; color: #2c3e50; font-weight: 600; }
+        .competition-result { justify-self: end; color: #225a81; background: #eaf3fa; border-radius: 6px; padding: .3rem .65rem; font-size: .9rem; text-align: center; }
+        .more-records { margin-top: 2rem; border: 1px solid #dce5ee; border-radius: 10px; background: #fff; }
+        .more-records summary { cursor: pointer; padding: 1.1rem 1.4rem; color: #2c3e50; font-weight: 600; }
+        .more-records summary span { margin-left: .6rem; font-size: .85rem; color: #687c8c; font-weight: 400; }
+        .more-records[open] > summary { border-bottom: 1px solid #dce5ee; margin-bottom: 1.2rem; }
+        .more-records > div { padding: 0 1.2rem 1.2rem; }
+        .more-records > ol { margin: 0 .6rem .6rem; border-top: 0; }
+        .awards-container, .portfolio-container { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+        .award-card .award-img { height: 265px; padding: 12px; background: #e7edf3; font-size: .9rem; }
+        .award-card .award-img img { width: 100%; height: 100%; object-fit: contain; }
+        .award-info h3 { font-size: 1rem; line-height: 1.55; overflow-wrap: anywhere; }
+        .skill-card:focus .skill-front { transform: rotateY(180deg); }
+        .skill-card:focus .skill-back { transform: rotateY(0); }
+        :focus-visible { outline: 3px solid #3189c7; outline-offset: 5px; }
+        .close-modal { border: 0; background: white; width: 38px; height: 38px; border-radius: 50%; line-height: 1; z-index: 20; }
+        @media (min-width: 769px) { .nav-links li { margin-left: clamp(.8rem, 2vw, 2rem); } }
+        @media (max-width: 768px) {
+            section { padding: 4.5rem 1.25rem; }
+            .hero { padding-top: 7rem; }
+            .nav-links { overflow-y: auto; }
+            .nav-links li { margin: 1rem 0; }
+            .score-grid { grid-template-columns: repeat(2, 1fr); }
+            .campus-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+            .competition-row { grid-template-columns: minmax(0, 1fr) auto; gap: .4rem .8rem; padding: 1rem .7rem; }
+            .competition-row h3 { grid-column: 1 / -1; grid-row: 2; margin-top: .3rem; }
+            .competition-result { grid-column: 2; grid-row: 1; max-width: 170px; }
+            .modal-content { width: 94%; max-height: 88vh; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+            .hero h2, .hero p, .btn { opacity: 1; }
+        }
+
+        /* Compact academic note */
+        .academic-block { margin-top: 1.4rem; padding-top: .9rem; }
+        .academic-block h3 { display: inline; font-size: .9rem; color: #607080; font-weight: 600; }
+        .academic-block small { font-size: .78rem; font-weight: 400; margin-left: .5rem; }
+        .academic-block p { margin-top: .25rem; color: #687887; font-size: .82rem; line-height: 1.7; }
+</style>
 </head>
 <body>
     <!-- 导航栏 -->
     <header>
         <nav>
             <a href="#home" class="logo">TomQZQ</a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="mainNavigation">
                 <li><a href="#about">關於我</a></li>
                 <li><a href="#skills">專業技能</a></li>
-                <li><a href="#portfolio">個人作品</a></li>
+                <li><a href="#competitions">比賽經歷</a></li><li><a href="#portfolio">個人作品</a></li>
                 <li><a href="#awards">獲獎證明</a></li>
                 <li><a href="#contact">聯繫我</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="mainNavigation">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </nav>
     </header>
 
@@ -821,12 +864,10 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>- 柯彬淼 -</h1>
-            <h2>資訊科技愛好者與將來的程式設計師</h2>
-            <p>
-                我對數學與程式設計懷有濃厚的興趣，這也引領我走上了資訊科技的道路。在學習過程中，我克服了初學C語言時遇到的挑戰，並逐步培養出紮實的自學能力。透過參加各類程式設計比賽，我不僅提升了技術實力，更加深了對人工智慧的熱情。除了程式開發之外，我也掌握了網路相關的基礎知識。隨著科技不斷進步，我期望能持續在電腦科學領域深造，將人工智慧應用於解決現實問題，發揮專業所長並貢獻一己之力。
-            </p>
+            <h2>程式設計、軟硬體實作與資訊科技探索</h2>
+            <p>我是柯彬淼，喜歡從數學與程式設計出發，把想法做成可以運作的作品。目前是高二學生。從資訊學競賽、微信小程序到 Arduino 與機器人控制，我持續透過實作累積經驗，也在團隊合作中學習把每個細節做好。</p>
             <a href="#about" class="btn">了解更多</a>
-        </div>
+        <a href="#competitions" class="btn btn-outline">查看比賽經歷</a></div>
     </section>
 
     <!-- 關於我部分 -->
@@ -836,301 +877,152 @@
             <div class="profile-img">
                 <img src="https://i.imgur.com/lvVYx5k.jpg" alt="TomQZQ" loading="lazy">
             </div>
-            <div class="about-text">
-                <h3>熱衷於資訊科技與程式設計</h3>
-                <p>
-                    我是柯彬淼，現在是一名高二學生，就讀澳門聖若瑟教區中學第五校，也是一名充滿熱情的資訊科技愛好者。從小我就對數學和邏輯謎題充滿興趣，這份熱愛引導我進入了程式設計的世界。在學習過程中，我特別專注於演算法和資料結構，並在多項程式設計競賽中獲得佳績。
-                </p>
-                <p>
-                    除了技術方面的專長，我也注重培養領導能力和團隊合作精神。在學校期間，我擔任過多個學生組織的幹部，負責策劃和執行各種活動，這些經驗讓我學會了如何有效地與他人溝通合作。
-                </p>
-                <p>
-                    我的目標是成為一名優秀的軟體工程師，專注於人工智慧領域。我相信技術的力量可以改變世界，我渴望能運用所學知識解決現實世界的問題，為社會帶來積極的影響。
-                </p>
-                <p>
-                    在閒暇時間，我喜歡研究新的程式語言和技術框架，與志同道合的朋友一起開發創新的專案。
-                </p>
-            </div>
+            <div class="about-text"><h3>在程式與實作之間，持續累積</h3>
+<p>我是柯彬淼，曾於 2013–2019 年就讀澳門聖若瑟教區中學第五校中文部小學，2019–2026 年於同校英文部接受中學教育。我的學習重心是數學、資訊科技與工程實作，擅長以 C、C++ 和 Python 進行程式設計，並將前端開發與硬體控制應用於專題。</p>
+<p>我承接過商業性質的微信小程序開發，也參與手機網站、資訊學與機器人競賽。在開發過程中，我習慣先查閱資料、動手測試，再與隊友討論調整，逐步把構想做成可用的成果。</p>
+<p>作為機器人班核心成員，我協助隊員參賽、開展活動攤位，並參與學校機器人班官方網站的開發與維護。我重視清晰的溝通與穩定的進度，願意主動承擔工作，與團隊一起完成任務。</p>
+</div>
         </div>
-    </section>
+    <div class="academic-block"><h3>學業表現 <small>2024／2025</small></h3><p>年級第 3 名（前 5%） · 數學 95.2／資訊科技 100／物理 92.2／化學 90.3，四科全年級第一。</p></div></section>
 
     <!-- 專業技能部分 -->
     <section id="skills" class="skills">
         <h2 class="section-title">專業技能</h2>
         <div class="skills-container">
             <!-- 技能卡片 -->
-            <div class="skill-card">
+            <div class="skill-card" tabindex="0" aria-label="C/C++：能完成中大型競賽與專題程式。">
+                <div class="skill-front">
+                    <div class="skill-icon">
+                        <i class="fas fa-copyright"></i>
+                    </div>
+                    <div class="skill-name">C/C++</div>
+                    </div>
+                <div class="skill-back">
+                    <p>能完成中大型競賽與專題程式。</p>
+                </div>
+            </div>
+            
+            <div class="skill-card" tabindex="0" aria-label="Python：熟練資料處理與腳本自動化，能用常見庫完成專題。">
                 <div class="skill-front">
                     <div class="skill-icon">
                         <i class="fab fa-python"></i>
                     </div>
-                    <div class="skill-name">Python (80%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 80%;"></div>
+                    <div class="skill-name">Python</div>
                     </div>
-                </div>
                 <div class="skill-back">
                     <p>熟練資料處理與腳本自動化，能用常見庫完成專題。</p>
                 </div>
             </div>
             
-            <div class="skill-card">
+            <div class="skill-card" tabindex="0" aria-label="微信小程序：熟悉 WXML/WXSS/JS，能做頁面路由與 API 串接。">
                 <div class="skill-front">
                     <div class="skill-icon">
-                        <i class="fas fa-copyright"></i>
+                        <i class="fab fa-weixin"></i>
                     </div>
-                    <div class="skill-name">C/C++ (80%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 80%;"></div>
+                    <div class="skill-name">微信小程序</div>
                     </div>
-                </div>
                 <div class="skill-back">
-                    <p>熟悉指針與 STL，能完成中大型競賽與專題程式。</p>
+                    <p>熟悉 WXML/WXSS/JS，能做頁面路由與 API 串接。</p>
                 </div>
             </div>
-            
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <div class="skill-name">算法與數據結構 (70%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <div class="skill-back">
-                    <p>能解中級競賽題，熟練經典算法和結構。</p>
-                </div>
-            </div>
-            
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="skill-name">機器學習 (45%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 45%;"></div>
-                    </div>
-                </div>
-                <div class="skill-back">
-                    <p>能做資料清理與特徵工程，使用 scikit-learn 訓練與評估模型。</p>
-                </div>
-            </div>
-            
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <div class="skill-name">MOS軟件 (70%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <div class="skill-back">
-                    <p>熟練操作 Word、Excel、PPT，能製作專業文件。</p>
-                </div>
-            </div>
-            
-            <div class="skill-card">
+        <div class="skill-card" tabindex="0" aria-label="HTML/CSS：會寫中等複雜頁面，懂響應式設計。">
                 <div class="skill-front">
                     <div class="skill-icon">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <div class="skill-name">3ds Max (40%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 40%;"></div>
+                    <div class="skill-name">HTML/CSS</div>
                     </div>
-                </div>
-                <div class="skill-back">
-                    <p>會基礎建模和簡單材質應用。</p>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <div class="skill-name">FL Studio (30%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 30%;"></div>
-                    </div>
-                </div>
-                <div class="skill-back">
-                    <p>能做簡單loop和音軌編輯。</p>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <div class="skill-name">Arduino (70%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <div class="skill-back">
-                    <p>能開發感測器控制項目，掌握硬體編程基礎。</p>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <div class="skill-name">HTML/CSS (60%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 60%;"></div>
-                    </div>
-                </div>
                 <div class="skill-back">
                     <p>會寫中等複雜頁面，懂響應式設計。</p>
                 </div>
             </div>
             
-            <div class="skill-card">
+            <div class="skill-card" tabindex="0" aria-label="JavaScript：能寫中等規模前端互動，熟悉 DOM 與 ES6+ 語法。">
                 <div class="skill-front">
                     <div class="skill-icon">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <div class="skill-name">JavaScript (80%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 80%;"></div>
+                    <div class="skill-name">JavaScript</div>
                     </div>
-                </div>
                 <div class="skill-back">
                     <p>能寫中等規模前端互動，熟悉 DOM 與 ES6+ 語法。</p>
                 </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card" tabindex="0" aria-label="Arduino：能開發感測器控制項目，掌握硬體編程基礎。">
+                <div class="skill-front">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="skill-name">Arduino</div>
+                    </div>
+                <div class="skill-back">
+                    <p>能開發感測器控制項目，掌握硬體編程基礎。</p>
+                </div>
+            </div>
+
+            <div class="skill-card" tabindex="0" aria-label="Node.js：能用 Node.js/Express 撰寫 API，處理路由與中介層。">
                 <div class="skill-front">
                     <div class="skill-icon">
                         <i class="fab fa-node-js"></i>
                     </div>
-                    <div class="skill-name">Node.js (65%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 65%;"></div>
+                    <div class="skill-name">Node.js</div>
                     </div>
-                </div>
                 <div class="skill-back">
                     <p>能用 Node.js/Express 撰寫 API，處理路由與中介層。</p>
                 </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card" tabindex="0" aria-label="MySQL：能設計表結構與寫 CRUD，多表查詢與索引基礎。">
                 <div class="skill-front">
                     <div class="skill-icon">
                         <i class="fas fa-database"></i>
                     </div>
-                    <div class="skill-name">MySQL (65%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 65%;"></div>
+                    <div class="skill-name">MySQL</div>
                     </div>
-                </div>
                 <div class="skill-back">
                     <p>能設計表結構與寫 CRUD，多表查詢與索引基礎。</p>
                 </div>
             </div>
 
-            <div class="skill-card">
-                <div class="skill-front">
-                    <div class="skill-icon">
-                        <i class="fab fa-weixin"></i>
-                    </div>
-                    <div class="skill-name">微信小程序 (60%)</div>
-                    <div class="skill-level">
-                        <div class="skill-level-bar" style="width: 60%;"></div>
-                    </div>
-                </div>
-                <div class="skill-back">
-                    <p>熟悉 WXML/WXSS/JS，能做頁面路由與 API 串接。</p>
-                </div>
             </div>
-        </div>
     </section>
 
     <!-- 個人作品部分 -->
-    <section id="portfolio" class="portfolio">
+    <section id="competitions" class="competitions"><h2 class="section-title">比賽經歷</h2><p class="section-intro">精選資訊學、網頁開發與創新應用競賽成果。</p><ol class="competition-list"><li class="competition-row"><span class="competition-year">2025</span><h3>第二十一屆港澳青少年網絡技能大賽</h3><span class="competition-result">金獎</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>澳門資訊學奧林匹克競賽（MOIS）</h3><span class="competition-result">銀獎</span></li>
+<li class="competition-row"><span class="competition-year">2026</span><h3>微信小程序全球創新挑戰賽 · 澳門區域賽</h3><span class="competition-result">特等獎</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>第八屆全澳中學生手機網站技術比賽</h3><span class="competition-result">亞軍</span></li>
+<li class="competition-row"><span class="competition-year">2024</span><h3>第七屆全澳中學生手機網站技術比賽</h3><span class="competition-result">亞軍</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>全澳中學生資訊科技知識問答比賽</h3><span class="competition-result">季軍</span></li>
+<li class="competition-row"><span class="competition-year">2024</span><h3>FISO National Round · Digital Technology</h3><span class="competition-result">金獎</span></li></ol><details class="more-records"><summary>其他比賽經歷 <span>15 項</span></summary><ol class="competition-list"><li class="competition-row"><span class="competition-year">2024／2025</span><h3>澳門中小學資訊技術創新與實踐比賽 · 智能對決</h3><span class="competition-result">亞軍</span></li>
+<li class="competition-row"><span class="competition-year">2024</span><h3>全澳中學生資訊科技知識問答比賽</h3><span class="competition-result">優異獎（第七名）</span></li>
+<li class="competition-row"><span class="competition-year">2023</span><h3>澳門資訊學奧林匹克選拔賽（MOIJ）</h3><span class="competition-result">銀獎</span></li>
+<li class="competition-row"><span class="competition-year">2022</span><h3>ROBOFEST Macau · RoboArts Senior</h3><span class="competition-result">亞軍</span></li>
+<li class="competition-row"><span class="competition-year">2023</span><h3>第一屆澳門人工智能創新挑戰賽 · 初中組</h3><span class="competition-result">一等獎</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>Singapore Math Global Final</h3><span class="competition-result">銅獎</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>《港澳盃》奧林匹克公開賽</h3><span class="competition-result">銀獎</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>全球數學精英賽 · 澳門賽區初賽 Math Olympiad</h3><span class="competition-result">銀獎</span></li>
+<li class="competition-row"><span class="competition-year">2025</span><h3>國際兒童及青少年物理大賽</h3><span class="competition-result">特金獎</span></li>
+<li class="competition-row"><span class="competition-year">2024</span><h3>Singapore Math Challenge</h3><span class="competition-result">Exemplary Award</span></li>
+<li class="competition-row"><span class="competition-year">2024</span><h3>FISO National Round · Reasoning &amp; Logic</h3><span class="competition-result">金獎</span></li>
+<li class="competition-row"><span class="competition-year">2024</span><h3>IMEC.online Maths Olympiad · IMEC5</h3><span class="competition-result">銀獎</span></li>
+<li class="competition-row"><span class="competition-year">2022</span><h3>Global Mathematics Coding Competition</h3><span class="competition-result">金獎</span></li><li class="competition-row"><span class="competition-year">2023</span><h3>CSP-J 非專業級軟體能力認證</h3><span class="competition-result">一等獎</span></li>
+<li class="competition-row"><span class="competition-year">2023</span><h3>CSP-S 非專業級軟體能力認證</h3><span class="competition-result">二等獎</span></li>
+</ol></details></section><section id="portfolio" class="portfolio">
         <h2 class="section-title">作品/活動</h2>
         <div class="portfolio-container">
-            <div class="portfolio-card" data-portfolio data-type="video" data-title="Geog project 街頭訪問" data-desc="以街訪形式呈現地理主題，完成採訪與後期剪輯。" data-video="https://www.youtube.com/embed/GZ2tqasM01s">
+            <div class="portfolio-card" data-portfolio data-type="video" data-title="微信小程序比賽作品「護老小助手」" data-desc="以長者照護為主題的微信小程序參賽作品展示。" data-video="https://www.youtube.com/embed/bbBqAMsAynU" tabindex="0" role="button" aria-label="查看護老小助手">
                 <div class="portfolio-media">
-                    <img class="portfolio-cover" src="https://img.youtube.com/vi/GZ2tqasM01s/hqdefault.jpg" alt="Geog project 街頭訪問 影片預覽" loading="lazy">
+                    <img class="portfolio-cover" src="https://img.youtube.com/vi/bbBqAMsAynU/hqdefault.jpg" alt="護老小助手 影片預覽" loading="lazy">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Geog project 街頭訪問</h3>
-                    <p>使用Ai進行剪輯，包括製作特效、素材分析和運鏡設計。</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-card" data-portfolio data-type="video" data-title="Arduino 羅漢塔" data-desc="結合硬體與演算法的展示作品，呈現羅漢塔過程。" data-video="https://www.youtube.com/embed/vSgBpDuO_WM">
-                <div class="portfolio-media">
-                    <img class="portfolio-cover" src="https://i.imgur.com/xl7cqGY.jpeg" alt="Arduino 羅漢塔 作品照片" loading="lazy">
-                </div>
-                <div class="portfolio-info">
-                    <h3>Arduino 羅漢塔</h3>
-                    <p>使用Arduino製作的機器，能夠簡單展示羅漢塔的解密過程和算法應用。</p>
+                    <h3>護老小助手</h3>
+                    <p>微信小程序比賽作品，聚焦長者日常照護。</p>
                 </div>
             </div>
 
-            <div class="portfolio-card" data-portfolio data-type="images" data-title="3dsmax 3d model - brain" data-desc="3ds Max 建模練習，呈現腦部結構與材質細節。" data-images="https://i.imgur.com/D4JsngE.jpeg,https://i.imgur.com/tXJg6re.jpeg,https://i.imgur.com/BdFjlxI.jpeg">
-                <div class="portfolio-media">
-                    <div class="media-stack">
-                        <img class="stack-card stack-1" src="https://i.imgur.com/D4JsngE.jpeg" alt="3dsmax 3d model - brain 圖片 1" loading="lazy">
-                        <img class="stack-card stack-2" src="https://i.imgur.com/tXJg6re.jpeg" alt="3dsmax 3d model - brain 圖片 2" loading="lazy">
-                        <img class="stack-card stack-3" src="https://i.imgur.com/BdFjlxI.jpeg" alt="3dsmax 3d model - brain 圖片 3" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>3dsmax 3d model - brain</h3>
-                    <p>3dsmax 3d建模 - 大腦</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card" data-portfolio data-type="video" data-title="alice三D動畫" data-desc="三維動畫分鏡與鏡頭運動練習，完成基礎場景表現。" data-video="https://www.youtube.com/embed/my_ZYo1p090">
-                <div class="portfolio-media">
-                    <img class="portfolio-cover" src="https://img.youtube.com/vi/my_ZYo1p090/hqdefault.jpg" alt="alice三D動畫 影片預覽" loading="lazy">
-                </div>
-                <div class="portfolio-info">
-                    <h3>alice三D動畫</h3>
-                    <p>以人物與場景動畫為主題的創作練習。</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card" data-portfolio data-type="images" data-title="機器人社團開放日活動" data-desc="活動展示與互動體驗設計，負責流程與現場協調。" data-images="https://i.imgur.com/r6DmAOh.jpeg,https://i.imgur.com/a1xNHHc.jpeg,https://i.imgur.com/fWGWPGF.jpeg">
-                <div class="portfolio-media">
-                    <div class="media-stack">
-                        <img class="stack-card stack-1" src="https://i.imgur.com/r6DmAOh.jpeg" alt="機器人社團開放日活動 圖片 1" loading="lazy">
-                        <img class="stack-card stack-2" src="https://i.imgur.com/a1xNHHc.jpeg" alt="機器人社團開放日活動 圖片 2" loading="lazy">
-                        <img class="stack-card stack-3" src="https://i.imgur.com/fWGWPGF.jpeg" alt="機器人社團開放日活動 圖片 3" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>機器人社團開放日活動</h3>
-                    <p>策劃展示內容並帶領現場互動體驗。</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card" data-portfolio data-type="images" data-title="flstudio和小貓" data-desc="音樂製作練習與節奏設計，結合主題視覺呈現。" data-images="https://i.imgur.com/jl94kaD.jpeg">
-                <div class="portfolio-media">
-                    <div class="media-stack">
-                        <img class="stack-card stack-1" src="https://i.imgur.com/jl94kaD.jpeg" alt="flstudio和小貓 圖片 1" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>flstudio和小貓</h3>
-                    <p>找不到作品了，只能找到這張小貓來證明了，以後再補</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card" data-portfolio data-type="images" data-title="商業性質微信小程序" data-desc="商業小程序規劃與介面設計，串接後端資料。" data-images="https://i.imgur.com/AnvboFD.png,https://i.imgur.com/wAtJUe0.png,https://i.imgur.com/R9bzciu.png">
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="商業性質微信小程序" data-desc="商業小程序規劃與介面設計，串接後端資料。" data-images="https://i.imgur.com/AnvboFD.png,https://i.imgur.com/wAtJUe0.png,https://i.imgur.com/R9bzciu.png" tabindex="0" role="button" aria-label="查看商業性質微信小程序">
                 <div class="portfolio-media">
                     <div class="media-stack">
                         <img class="stack-card stack-1" src="https://i.imgur.com/AnvboFD.png" alt="商業性質微信小程序 圖片 1" loading="lazy">
@@ -1144,29 +1036,7 @@
                 </div>
             </div>
 
-            <div class="portfolio-card" data-portfolio data-type="video" data-title="微信小程序比賽作品「護老小助手」" data-desc="以長者照護為主題的微信小程序參賽作品展示。" data-video="https://www.youtube.com/embed/bbBqAMsAynU">
-                <div class="portfolio-media">
-                    <img class="portfolio-cover" src="https://img.youtube.com/vi/bbBqAMsAynU/hqdefault.jpg" alt="護老小助手 影片預覽" loading="lazy">
-                </div>
-                <div class="portfolio-info">
-                    <h3>護老小助手</h3>
-                    <p>微信小程序比賽作品，聚焦長者日常照護。</p>
-                </div>
-            </div>
-
-            <a class="portfolio-card" href="https://cdsj5robot.com/phoneweb/dist/index.html" target="_blank" rel="noopener noreferrer" aria-label="第七屆手機網站技術比賽 簡介">
-                <div class="portfolio-media">
-                    <div class="media-stack">
-                        <img class="stack-card stack-1" src="https://i.imgur.com/AZvj89a.png" alt="第七屆手機網站技術比賽 預覽 1" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>第七屆手機網站技術比賽</h3>
-                    <p>比賽簡介與活動內容介紹，點擊查看官方頁面。</p>
-                </div>
-            </a>
-
-            <div class="portfolio-card" data-portfolio data-type="images" data-title="第八屆手機網站技術比賽" data-desc="第八屆比賽作品展示與活動花絮。" data-images="https://i.imgur.com/IlPkYM7.png,https://i.imgur.com/GTHdmDo.png,https://i.imgur.com/CE57Jfm.png,https://i.imgur.com/n22ELs0.png">
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="第八屆手機網站技術比賽" data-desc="2025 · 第八屆全澳中學生手機網站技術比賽亞軍。" data-images="https://i.imgur.com/IlPkYM7.png,https://i.imgur.com/GTHdmDo.png,https://i.imgur.com/CE57Jfm.png,https://i.imgur.com/n22ELs0.png" tabindex="0" role="button" aria-label="查看第八屆手機網站技術比賽">
                 <div class="portfolio-media">
                     <div class="media-stack">
                         <img class="stack-card stack-1" src="https://i.imgur.com/IlPkYM7.png" alt="第八屆手機網站技術比賽 圖片 1" loading="lazy">
@@ -1176,87 +1046,83 @@
                 </div>
                 <div class="portfolio-info">
                     <h3>第八屆手機網站技術比賽</h3>
-                    <p>比賽作品展示。</p>
+                    <p>2025 · 第八屆全澳中學生手機網站技術比賽亞軍。</p>
                 </div>
             </div>
-        </div>
+        <a class="portfolio-card" href="https://cdsj5robot.com/phoneweb/dist/index.html" target="_blank" rel="noopener noreferrer" aria-label="第七屆手機網站技術比賽 簡介">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/AZvj89a.png" alt="第七屆手機網站技術比賽 預覽 1" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>第七屆手機網站技術比賽</h3>
+                    <p>2024 · 第七屆全澳中學生手機網站技術比賽亞軍。點擊查看相關頁面。</p>
+                </div>
+            </a>
+
+            <div class="portfolio-card" data-portfolio data-type="video" data-title="Arduino 羅漢塔" data-desc="結合硬體與演算法的展示作品，呈現羅漢塔過程。" data-video="https://www.youtube.com/embed/vSgBpDuO_WM" tabindex="0" role="button" aria-label="查看Arduino 羅漢塔">
+                <div class="portfolio-media">
+                    <img class="portfolio-cover" src="https://i.imgur.com/xl7cqGY.jpeg" alt="Arduino 羅漢塔 作品照片" loading="lazy">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Arduino 羅漢塔</h3>
+                    <p>使用Arduino製作的機器，能夠簡單展示羅漢塔的解密過程和算法應用。</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="機器人社團開放日活動" data-desc="活動展示與互動體驗設計，負責流程與現場協調。" data-images="https://i.imgur.com/r6DmAOh.jpeg,https://i.imgur.com/a1xNHHc.jpeg,https://i.imgur.com/fWGWPGF.jpeg" tabindex="0" role="button" aria-label="查看機器人社團開放日活動">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/r6DmAOh.jpeg" alt="機器人社團開放日活動 圖片 1" loading="lazy">
+                        <img class="stack-card stack-2" src="https://i.imgur.com/a1xNHHc.jpeg" alt="機器人社團開放日活動 圖片 2" loading="lazy">
+                        <img class="stack-card stack-3" src="https://i.imgur.com/fWGWPGF.jpeg" alt="機器人社團開放日活動 圖片 3" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>機器人社團開放日活動</h3>
+                    <p>策劃展示內容並帶領現場互動體驗。</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-portfolio data-type="images" data-title="3dsmax 3d model - brain" data-desc="3ds Max 建模練習，呈現腦部結構與材質細節。" data-images="https://i.imgur.com/D4JsngE.jpeg,https://i.imgur.com/tXJg6re.jpeg,https://i.imgur.com/BdFjlxI.jpeg" tabindex="0" role="button" aria-label="查看3dsmax 3d model - brain">
+                <div class="portfolio-media">
+                    <div class="media-stack">
+                        <img class="stack-card stack-1" src="https://i.imgur.com/D4JsngE.jpeg" alt="3dsmax 3d model - brain 圖片 1" loading="lazy">
+                        <img class="stack-card stack-2" src="https://i.imgur.com/tXJg6re.jpeg" alt="3dsmax 3d model - brain 圖片 2" loading="lazy">
+                        <img class="stack-card stack-3" src="https://i.imgur.com/BdFjlxI.jpeg" alt="3dsmax 3d model - brain 圖片 3" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>3dsmax 3d model - brain</h3>
+                    <p>3dsmax 3d建模 - 大腦</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-portfolio data-type="video" data-title="alice三D動畫" data-desc="三維動畫分鏡與鏡頭運動練習，完成基礎場景表現。" data-video="https://www.youtube.com/embed/my_ZYo1p090" tabindex="0" role="button" aria-label="查看alice三D動畫">
+                <div class="portfolio-media">
+                    <img class="portfolio-cover" src="https://img.youtube.com/vi/my_ZYo1p090/hqdefault.jpg" alt="alice三D動畫 影片預覽" loading="lazy">
+                </div>
+                <div class="portfolio-info">
+                    <h3>alice三D動畫</h3>
+                    <p>以人物與場景動畫為主題的創作練習。</p>
+                </div>
+            </div>
+
+            </div>
     </section>
     <!-- 獲獎證明部分 -->
     <section id="awards" class="awards">
         <h2 class="section-title">獲獎證明</h2>
-        <div class="categories">
-            <button class="category-btn active" data-category="all">全部</button>
-            <button class="category-btn" data-category="academic">學術競賽</button>
-            <button class="category-btn" data-category="music">音樂證書</button>
-            <button class="category-btn" data-category="it">軟件與IT</button>
-            <button class="category-btn" data-category="ai">AI/STEM創新</button>
-            <button class="category-btn" data-category="other">其他</button>
-        </div>
-        
-        <div class="awards-container">
+        <p class="section-intro">精選競賽、學業與專業認證紀錄。點擊照片可放大查看。</p><div class="awards-container">
             <!-- 學術競賽 -->
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/5EO8qMb.jpeg" alt="FISO National Round 2024 – Digital Technology (Gold)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>FISO National Round 2024 – Digital Technology (Gold)</h3>
-                    <p>FISO全國賽2024 – 數位科技（金獎）</p>
-                </div>
+            <!-- 音樂證書 -->
+            <!-- 軟件與IT -->
 
-            </div>
-            
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/Z0Nawvf.jpeg" alt="FISO National Round 2024 – Mathematics (Bronze)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>FISO National Round 2024 – Mathematics (Bronze)</h3>
-                    <p>FISO全國賽2024 – 數學（銅獎）</p>
-                </div>
 
-            </div>
-            
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/SjGjArN.jpeg" alt="FISO National Round 2024 – Reasoning & Logic (Gold)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>FISO National Round 2024 – Reasoning & Logic (Gold)</h3>
-                    <p>FISO全國賽2024 – 推理與邏輯（金獎）</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/zYZGXNV.jpeg" alt="Global Mathematics Coding Competition 2022 – Gold Award" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>Global Mathematics Coding Competition 2022 – Gold Award</h3>
-                    <p>全球數學編碼競賽2022 – 金獎</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="other">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/T6oBuZ7.jpeg" alt="2024-2025 Award for Academic Achievement - First Prize" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>2024-2025 Award for Academic Achievement - First Prize</h3>
-                    <p>2024-2025 學業一等獎</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="other">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/AOonLl5.jpeg" alt="2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金</h3>
-                </div>
-            </div>       
-            
-            <div class="award-card" data-category="it">
+
+            <!-- AI/STEM創新 -->
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：第二十一屆港澳青少年網路技能大賽2025 金獎">
                 <div class="award-img">
                     <img src="https://i.imgur.com/W4EHOEy.jpeg" alt="第二十一屆港澳青少年網路技能大賽2025 金獎" loading="lazy">
                 </div>
@@ -1265,130 +1131,7 @@
                 </div>
             </div> 
             
-            <div class="award-card" data-category="other">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/nRdOw1t.jpeg" alt="2024-2025 科學與科技成績優異獎" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>2024-2025 科學與科技成績優異獎</h3>
-                </div>
-            </div>      
-            
-            <div class="award-card" data-category="other">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/gleR4l9.jpeg" alt="2024-2025 明德獎" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>2024-2025 明德獎</h3>
-                </div>
-            </div>         
-            
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/NRIQwgG.jpeg" alt="IMEC.online Maths Olympiad IMEC5 2024 – Silver Award" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>IMEC.online Maths Olympiad IMEC5 2024 – Silver Award</h3>
-                    <p>IMEC線上奧林匹克2024 – 銀獎（IMEC5）  </p>
-                </div>
-            </div>
-                     
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/q88WQHQ.jpeg" alt="ROBOFEST Macau RoboArts Senior 2022 – 2nd Place" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ROBOFEST Macau RoboArts Senior 2022 – 2nd Place</h3>
-                    <p>ROBOFEST 2022 – 亞軍</p>
-                </div>
-            </div>
-          
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/9gxUG3N.jpeg" alt="Singapore Math Challenge 2024 – Exemplary Award" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>Singapore Math Challenge 2024 – Exemplary Award</h3>
-                    <p>新加坡數學挑戰賽2024 – 傑出獎</p>
-                </div>
-            </div>
-
-            <div class="award-card" data-category="academic">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/Ml0xSUb.jpeg" alt="WMI Preliminary Round 2022 – Bronze Award" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>WMI Preliminary Round 2022 – Bronze Award</h3>
-                    <p>世界數學邀請賽預賽2022 – 銅獎</p>
-                </div>
-            </div>
-
-            <!-- 音樂證書 -->
-            <div class="award-card" data-category="music">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/6oYpTAQ.jpeg" alt="ABRSM Grade 1 Piano – 2015" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ABRSM Grade 1 Piano – 2015</h3>
-                    <p>英國皇家音樂學院鋼琴 1 級 – 2015</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="music">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/MW0Jp6H.jpeg" alt="ABRSM Grade 3 Piano – 2016 (with merit)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ABRSM Grade 3 Piano – 2016 (with merit)</h3>
-                    <p>英國皇家音樂學院鋼琴 3 級 – 2016（優異）</p>
-                </div>
-            </div>
-                        
-            <div class="award-card" data-category="music">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/Y0UMeOu.png" alt="ABRSM Grade 5 Music Theory – 2020 (with distinction)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ABRSM Grade 5 Music Theory – 2020 (with distinction)</h3>
-                    <p>英國皇家音樂學院音樂理論 5 級 – 2020（卓越）</p>
-                </div>
-            </div>
-
-            <div class="award-card" data-category="music">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/Ejvwxwn.jpeg" alt="ABRSM Grade 5 Piano – 2018" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ABRSM Grade 5 Piano – 2018</h3>
-                    <p>英國皇家音樂學院鋼琴 5 級 – 2018</p>
-                </div>
-            </div>
-                        
-            <div class="award-card" data-category="music">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/1ZI3WzY.jpeg" alt="ABRSM Grade 7 Piano – 2021 (with merit)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ABRSM Grade 7 Piano – 2021 (with merit)</h3>
-                    <p>英國皇家音樂學院鋼琴 7 級 – 2021（優異）</p>
-                </div>
-            </div>
-                        
-            <div class="award-card" data-category="music">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/5WRBDVz.jpeg" alt="ABRSM Grade 8 Piano – 2023 (with merit)" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>ABRSM Grade 8 Piano – 2023 (with merit)</h3>
-                    <p>英國皇家音樂學院鋼琴 8 級 – 2023（優異） </p>
-                </div>
-            </div>
-            
-            <!-- 軟件與IT -->
-
-
-
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：CCF CSP-J/S Elementary Level – First Prize (2023)">
                 <div class="award-img">
                     <img src="https://i.imgur.com/BwgFK1Y.jpeg" alt="CCF CSP-J/S Elementary Level – First Prize (2023)" loading="lazy">
                 </div>
@@ -1398,7 +1141,7 @@
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：CCF CSP-J/S Intermediate Level – Second Prize (2023)">
                 <div class="award-img">
                     <img src="https://i.imgur.com/gok5yBJ.jpeg" alt="CCF CSP-J/S Intermediate Level – Second Prize (2023)" loading="lazy">
                 </div>
@@ -1409,37 +1152,7 @@
             </div>
 
               
-            <div class="award-card" data-category="it">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/DNy0kGO.png" alt="Excel 2019 Associate – 2025" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>Excel 2019 Associate – 2025</h3>
-                    <p>Excel 2019 助理認證 – 2025</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="it">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/YB0SsC9.png" alt="Excel 2019 Expert – 2025" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>Excel 2019 Expert – 2025</h3>
-                    <p>Excel 2019 專家認證 – 2025</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="it">
-                <div class="award-img">
-                    <img src="https://i.imgur.com/pLj79FQ.png" alt="Microsoft Office Specialist – Associate (MOS) – 2025" loading="lazy">
-                </div>
-                <div class="award-info">
-                    <h3>Microsoft Office Specialist – Associate (MOS) – 2025</h3>
-                    <p>微軟辦公軟體專家助理認證 – 2025</p>
-                </div>
-            </div>
-            
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：MOIJ Macau Informatics Olympiad – Silver Award (2023)">
                 <div class="award-img">
                     <img src="https://i.imgur.com/hIrCLoj.jpeg" alt="MOIJ Macau Informatics Olympiad – Silver Award (2023)" loading="lazy">
                 </div>
@@ -1449,57 +1162,176 @@
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：FISO National Round 2024 – Digital Technology (Gold)">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/bIIRPyd.png" alt="Office PowerPoint? 2016 – 2023" loading="lazy">
+                    <img src="https://i.imgur.com/5EO8qMb.jpeg" alt="FISO National Round 2024 – Digital Technology (Gold)" loading="lazy">
                 </div>
                 <div class="award-info">
-                    <h3>Office PowerPoint® 2016 – 2023</h3>
-                    <p>Office PowerPoint® 2016 認證 – 2023</p>
+                    <h3>FISO National Round 2024 – Digital Technology (Gold)</h3>
+                    <p>FISO全國賽2024 – 數位科技（金獎）</p>
+                </div>
+
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/wwjWw0w.jpeg" alt="1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)</h3>
+                    <p>第一屆澳門人工智能創新挑戰賽 – 初中組 – 一等獎（2023）</p>
+                </div>
+            </div>
+        <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ROBOFEST Macau RoboArts Senior 2022 – 2nd Place">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/q88WQHQ.jpeg" alt="ROBOFEST Macau RoboArts Senior 2022 – 2nd Place" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ROBOFEST Macau RoboArts Senior 2022 – 2nd Place</h3>
+                    <p>ROBOFEST 2022 – 亞軍</p>
+                </div>
+            </div>
+          
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：FISO National Round 2024 – Reasoning &amp; Logic (Gold)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/SjGjArN.jpeg" alt="FISO National Round 2024 – Reasoning &amp; Logic (Gold)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>FISO National Round 2024 – Reasoning &amp; Logic (Gold)</h3>
+                    <p>FISO全國賽2024 – 推理與邏輯（金獎）</p>
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/Irtr7yf.png" alt="PowerPoint 2019 Associate – 2023" loading="lazy">
+                    <img src="https://i.imgur.com/AOonLl5.jpeg" alt="2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金" loading="lazy">
                 </div>
                 <div class="award-info">
-                    <h3>PowerPoint 2019 Associate – 2023</h3>
-                    <p>PowerPoint 2019 助理認證 – 2023</p>
+                    <h3>2024-2025 澳門科技大學計算機科學與工程學院校友會獎學金</h3>
+                </div>
+            </div>       
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ABRSM Grade 8 Piano – 2023 (with merit)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/5WRBDVz.jpeg" alt="ABRSM Grade 8 Piano – 2023 (with merit)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ABRSM Grade 8 Piano – 2023 (with merit)</h3>
+                    <p>英國皇家音樂學院鋼琴 8 級 – 2023（優異） </p>
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            </div>
+    <details class="more-records"><summary>其他證書與紀錄 <span>22 項</span></summary><div class="awards-container"><div class="award-card" tabindex="0" role="button" aria-label="放大查看：Global Mathematics Coding Competition 2022 – Gold Award">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/eAEoWUz.jpeg" alt="Programming C Level-1 (E) – 2025" loading="lazy">
+                    <img src="https://i.imgur.com/zYZGXNV.jpeg" alt="Global Mathematics Coding Competition 2022 – Gold Award" loading="lazy">
                 </div>
                 <div class="award-info">
-                    <h3>Programming C Level-1 (E) – 2025</h3>
-                    <p>C 程式設計 一級（E）– 2025</p>
+                    <h3>Global Mathematics Coding Competition 2022 – Gold Award</h3>
+                    <p>全球數學編碼競賽2022 – 金獎</p>
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Singapore Math Challenge 2024 – Exemplary Award">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/1qdFzBl.jpeg" alt="Python Level-1 – Junior Software Programming Test – 2024" loading="lazy">
+                    <img src="https://i.imgur.com/9gxUG3N.jpeg" alt="Singapore Math Challenge 2024 – Exemplary Award" loading="lazy">
                 </div>
                 <div class="award-info">
-                    <h3>Python Level-1 – Junior Software Programming Test – 2024</h3>
-                    <p>Python 一級 – 青少年軟體程式設計測驗 – 2024</p>
+                    <h3>Singapore Math Challenge 2024 – Exemplary Award</h3>
+                    <p>新加坡數學挑戰賽2024 – 傑出獎</p>
+                </div>
+            </div>
+
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：IMEC.online Maths Olympiad IMEC5 2024 – Silver Award">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/NRIQwgG.jpeg" alt="IMEC.online Maths Olympiad IMEC5 2024 – Silver Award" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>IMEC.online Maths Olympiad IMEC5 2024 – Silver Award</h3>
+                    <p>IMEC線上奧林匹克2024 – 銀獎（IMEC5）  </p>
+                </div>
+            </div>
+                     
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：FISO National Round 2024 – Mathematics (Bronze)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/Z0Nawvf.jpeg" alt="FISO National Round 2024 – Mathematics (Bronze)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>FISO National Round 2024 – Mathematics (Bronze)</h3>
+                    <p>FISO全國賽2024 – 數學（銅獎）</p>
+                </div>
+
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：WMI Preliminary Round 2022 – Bronze Award">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/Ml0xSUb.jpeg" alt="WMI Preliminary Round 2022 – Bronze Award" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>WMI Preliminary Round 2022 – Bronze Award</h3>
+                    <p>世界數學邀請賽預賽2022 – 銅獎</p>
+                </div>
+            </div>
+
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：2024-2025 Award for Academic Achievement - First Prize">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/T6oBuZ7.jpeg" alt="2024-2025 Award for Academic Achievement - First Prize" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>2024-2025 Award for Academic Achievement - First Prize</h3>
+                    <p>2024-2025 學業一等獎</p>
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：2024-2025 科學與科技成績優異獎">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/piOOcBz.png" alt="Word 2019 Associate – 2025" loading="lazy">
+                    <img src="https://i.imgur.com/nRdOw1t.jpeg" alt="2024-2025 科學與科技成績優異獎" loading="lazy">
                 </div>
                 <div class="award-info">
-                    <h3>Word 2019 Associate – 2025</h3>
-                    <p>Word 2019 助理認證 – 2025</p>
+                    <h3>2024-2025 科學與科技成績優異獎</h3>
+                </div>
+            </div>      
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：2024-2025 明德獎">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/gleR4l9.jpeg" alt="2024-2025 明德獎" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>2024-2025 明德獎</h3>
+                </div>
+            </div>         
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Excel 2019 Expert – 2025">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/YB0SsC9.png" alt="Excel 2019 Expert – 2025" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>Excel 2019 Expert – 2025</h3>
+                    <p>Excel 2019 專家認證 – 2025</p>
                 </div>
             </div>
             
-            <div class="award-card" data-category="it">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Microsoft Office Specialist – Associate (MOS) – 2025">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/pLj79FQ.png" alt="Microsoft Office Specialist – Associate (MOS) – 2025" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>Microsoft Office Specialist – Associate (MOS) – 2025</h3>
+                    <p>微軟辦公軟體專家助理認證 – 2025</p>
+                </div>
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Excel 2019 Associate – 2025">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/DNy0kGO.png" alt="Excel 2019 Associate – 2025" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>Excel 2019 Associate – 2025</h3>
+                    <p>Excel 2019 助理認證 – 2025</p>
+                </div>
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Word Associate – Microsoft 365 Apps – 2025">
                 <div class="award-img">
                     <img src="https://i.imgur.com/pGhF4Bv.png" alt="Word Associate – Microsoft 365 Apps – 2025" loading="lazy">
                 </div>
@@ -1511,18 +1343,107 @@
             
                     
 
-            <!-- AI/STEM創新 -->
-            <div class="award-card" data-category="ai">
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Word 2019 Associate – 2025">
                 <div class="award-img">
-                    <img src="https://i.imgur.com/wwjWw0w.jpeg" alt="1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)" loading="lazy">
+                    <img src="https://i.imgur.com/piOOcBz.png" alt="Word 2019 Associate – 2025" loading="lazy">
                 </div>
                 <div class="award-info">
-                    <h3>1st Macau AI Innovation Challenge – Junior Category – First Prize (2023)</h3>
-                    <p>第一屆澳門人工智能創新挑戰賽 – 初中組 – 一等獎（2023）</p>
+                    <h3>Word 2019 Associate – 2025</h3>
+                    <p>Word 2019 助理認證 – 2025</p>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：PowerPoint 2019 Associate – 2023">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/Irtr7yf.png" alt="PowerPoint 2019 Associate – 2023" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>PowerPoint 2019 Associate – 2023</h3>
+                    <p>PowerPoint 2019 助理認證 – 2023</p>
+                </div>
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Office PowerPoint® 2016 – 2023">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/bIIRPyd.png" alt="Office PowerPoint? 2016 – 2023" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>Office PowerPoint® 2016 – 2023</h3>
+                    <p>Office PowerPoint® 2016 認證 – 2023</p>
+                </div>
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Programming C Level-1 (E) – 2025">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/eAEoWUz.jpeg" alt="Programming C Level-1 (E) – 2025" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>Programming C Level-1 (E) – 2025</h3>
+                    <p>C 程式設計 一級（E）– 2025</p>
+                </div>
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：Python Level-1 – Junior Software Programming Test – 2024">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/1qdFzBl.jpeg" alt="Python Level-1 – Junior Software Programming Test – 2024" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>Python Level-1 – Junior Software Programming Test – 2024</h3>
+                    <p>Python 一級 – 青少年軟體程式設計測驗 – 2024</p>
+                </div>
+            </div>
+            
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ABRSM Grade 7 Piano – 2021 (with merit)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/1ZI3WzY.jpeg" alt="ABRSM Grade 7 Piano – 2021 (with merit)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ABRSM Grade 7 Piano – 2021 (with merit)</h3>
+                    <p>英國皇家音樂學院鋼琴 7 級 – 2021（優異）</p>
+                </div>
+            </div>
+                        
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ABRSM Grade 5 Music Theory – 2020 (with distinction)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/Y0UMeOu.png" alt="ABRSM Grade 5 Music Theory – 2020 (with distinction)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ABRSM Grade 5 Music Theory – 2020 (with distinction)</h3>
+                    <p>英國皇家音樂學院音樂理論 5 級 – 2020（卓越）</p>
+                </div>
+            </div>
+
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ABRSM Grade 5 Piano – 2018">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/Ejvwxwn.jpeg" alt="ABRSM Grade 5 Piano – 2018" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ABRSM Grade 5 Piano – 2018</h3>
+                    <p>英國皇家音樂學院鋼琴 5 級 – 2018</p>
+                </div>
+            </div>
+                        
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ABRSM Grade 3 Piano – 2016 (with merit)">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/MW0Jp6H.jpeg" alt="ABRSM Grade 3 Piano – 2016 (with merit)" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ABRSM Grade 3 Piano – 2016 (with merit)</h3>
+                    <p>英國皇家音樂學院鋼琴 3 級 – 2016（優異）</p>
+                </div>
+            </div>
+                        
+            <div class="award-card" tabindex="0" role="button" aria-label="放大查看：ABRSM Grade 1 Piano – 2015">
+                <div class="award-img">
+                    <img src="https://i.imgur.com/6oYpTAQ.jpeg" alt="ABRSM Grade 1 Piano – 2015" loading="lazy">
+                </div>
+                <div class="award-info">
+                    <h3>ABRSM Grade 1 Piano – 2015</h3>
+                    <p>英國皇家音樂學院鋼琴 1 級 – 2015</p>
+                </div>
+            </div>
+            
+            </div></details></section>
     <style>
         .award-card{
             display: flex;
@@ -1562,9 +1483,9 @@
     </section>
 
     <!-- 作品/活動模態框 -->
-    <div class="modal" id="portfolioModal">
+    <div class="modal" id="portfolioModal" role="dialog" aria-modal="true" aria-label="作品預覽">
         <div class="modal-content portfolio-modal-content">
-            <span class="close-modal" id="portfolioClose">&times;</span>
+            <button class="close-modal" id="portfolioClose" type="button" aria-label="關閉預覽">×</button>
             <div class="portfolio-modal-header">
                 <h3 id="portfolioModalTitle"></h3>
                 <p id="portfolioModalDesc"></p>
@@ -1584,9 +1505,9 @@
     </div>
 
     <!-- 證書模態框 -->
-    <div class="modal" id="awardModal">
+    <div class="modal" id="awardModal" role="dialog" aria-modal="true" aria-label="證書預覽">
         <div class="modal-content">
-            <span class="close-modal" id="awardClose">&times;</span>
+            <button class="close-modal" id="awardClose" type="button" aria-label="關閉預覽">×</button>
             <img src="" alt="證書" class="modal-img" id="modalImage">
         </div>
     </div>
@@ -1600,29 +1521,7 @@
         
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-        });
-        
-        // 獲獎證明分類功能
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const awardCards = document.querySelectorAll('.award-card');
-        
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // 移除所有按鈕的active類
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                // 為當前點擊的按鈕添加active類
-                btn.classList.add('active');
-                
-                const category = btn.dataset.category;
-                
-                awardCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
+            hamburger.setAttribute('aria-expanded', String(navLinks.classList.contains('active')));
         });
         
         // 滾動時元素漸入效果
@@ -1654,6 +1553,7 @@
                     // 如果是移動設備，點擊後關閉導航菜單
                     if (window.innerWidth <= 768) {
                         navLinks.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
                     }
                 }
             });
@@ -1753,6 +1653,7 @@
                 if (imgEl) {
                 // 自動把 img 的 src 塞到 modalImg
                 awardModalImg.src = imgEl.src;
+                awardModalImg.alt = imgEl.alt;
                 awardModal.style.display = 'flex';
                 }
             });
@@ -1794,7 +1695,46 @@
                 observer.observe(el);
             });
         });
-    </script>
+    
+        // Keyboard access and focus restoration for image / video previews.
+        let previewTrigger = null;
+        document.querySelectorAll('[data-portfolio], .award-card').forEach(card => {
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); card.click(); }
+            });
+            card.addEventListener('click', () => {
+                previewTrigger = card;
+                document.body.style.overflow = 'hidden';
+                (card.classList.contains('award-card') ? awardClose : portfolioClose).focus();
+            });
+        });
+        const restorePreviewFocus = () => {
+            document.body.style.overflow = '';
+            if (previewTrigger) previewTrigger.focus({preventScroll: true});
+        };
+        [awardClose, portfolioClose].forEach(button => button.addEventListener('click', restorePreviewFocus));
+        window.addEventListener('click', event => {
+            if (event.target === awardModal || event.target === portfolioModal) restorePreviewFocus();
+        });
+        document.addEventListener('keydown', event => {
+            const activeModal = [awardModal, portfolioModal].find(modal => modal.style.display === 'flex');
+            if (!activeModal) return;
+            if (event.key === 'Escape') {
+                activeModal.style.display = 'none';
+                portfolioModalVideo.src = '';
+                restorePreviewFocus();
+            }
+            if (activeModal === portfolioModal && portfolioImages.length > 1) {
+                if (event.key === 'ArrowLeft') setPortfolioImage(portfolioIndex - 1);
+                if (event.key === 'ArrowRight') setPortfolioImage(portfolioIndex + 1);
+            }
+            if (event.key === 'Tab') {
+                const focusable = [...activeModal.querySelectorAll('button, iframe')].filter(el => el.getClientRects().length);
+                const first = focusable[0], last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+                else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+            }
+        });
+</script>
 </body>
 </html>
-
